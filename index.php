@@ -14,38 +14,38 @@ Autoload::register();
 Env::loadEnv();
 session_start();
 
-Router::get('/bibliolen-dev-main', function () {
-    header("Location: /bibliolen-dev-main/accueil");
+Router::get('/', function () {
+    header("Location: /accueil");
 });
 
-Router::get('/bibliolen-dev-main/accueil', [Controllers\HomeController::class, 'show'])->middleware(AuthMiddleware::class);
+Router::get('/accueil', [Controllers\HomeController::class, 'show'])->middleware(AuthMiddleware::class);
 
-Router::prefix('/bibliolen-dev-main/historique')->group(function () {
+Router::prefix('/historique')->group(function () {
     Router::get('', [Controllers\HistoryController::class, 'show'])->middleware(AuthMiddleware::class); // historique
-    Router::post('/bibliolen-dev-main/cancel', [Controllers\HistoryController::class, 'cancel']);
+    Router::post('/cancel', [Controllers\HistoryController::class, 'cancel']);
 });
 
-Router::get('/bibliolen-dev-main/reservation', [Controllers\LoanController::class, 'list'])->middleware(ManagerAuthMiddleware::class); // reservation
+Router::get('/reservation', [Controllers\LoanController::class, 'list'])->middleware(ManagerAuthMiddleware::class); // reservation
 
-Router::get('/bibliolen-dev-main/login', [Controllers\LoginController::class, 'render']);
-Router::post('/bibliolen-dev-main/login', [Controllers\LoginController::class, 'handle']);
+Router::get('/login', [Controllers\LoginController::class, 'render']);
+Router::post('/login', [Controllers\LoginController::class, 'handle']);
 
-Router::get('/bibliolen-dev-main/logout', [Controllers\LogoutController::class, 'handle']); // logout
+Router::get('logout', [Controllers\LogoutController::class, 'handle']); // logout
 
-Router::prefix('/bibliolen-dev-main/forgot-password')->group(function () {
+Router::prefix('/forgot-password')->group(function () {
     Router::get('', [Controllers\ForgotPasswordController::class, 'render']);
     Router::post('', [Controllers\ForgotPasswordController::class, 'handle']);
     Router::get('(.*?)', [Controllers\ForgotPasswordController::class, 'renderWithToken']);
     Router::post('(.*?)', [Controllers\ForgotPasswordController::class, 'handleWithToken']);
 });
 
-Router::prefix('/bibliolen-dev-main/livres')->group(function () {
+Router::prefix('/livres')->group(function () {
     Router::get('recherche', [Controllers\BooksController::class, 'index'])->middleware(AuthMiddleware::class); // /livres/recherche
     Router::get('(\d+)', [Controllers\BooksController::class, 'show'])->middleware(AuthMiddleware::class); // /livres/id
     Router::post('/loan', [Controllers\LoanController::class, 'add']);
 });
 
-Router::prefix('/bibliolen-dev-main/inventaire')->group(function () {
+Router::prefix('/inventaire')->group(function () {
     Router::get('', [Controllers\InventoryController::class, 'inventory'])->middleware(ManagerAuthMiddleware::class); // /livres/recherche
     Router::get('/ajout', [Controllers\InventoryController::class, 'add'])->middleware(ManagerAuthMiddleware::class); // /livres/id
     Router::post('/ajoutLivreInventaire', [Controllers\InventoryController::class, 'addBooksInventory']);
@@ -54,7 +54,7 @@ Router::prefix('/bibliolen-dev-main/inventaire')->group(function () {
 Router::get('/profile', [Controllers\ProfileController::class, 'render'])->middleware(ManagerAuthMiddleware::class); // Info user
 Router::post('/profile', [Controllers\ProfileController::class, 'handle'])->middleware(ManagerAuthMiddleware::class); // Info user
 
-Router::prefix('/bibliolen-dev-main/utilisateur')->group(function () { //
+Router::prefix('/utilisateur')->group(function () { //
     Router::get('/recherche', [Controllers\UserController::class, 'index'])->middleware(ManagerAuthMiddleware::class); // Informations Listée
     Router::get('/details', [Controllers\UserController::class, 'info'])->middleware(AuthMiddleware::class); // Information utilisateurs
     Router::get('/ajout', [Controllers\UserController::class, 'add'])->middleware(ManagerAuthMiddleware::class); // Accédé page ajout utilisateur
@@ -63,7 +63,7 @@ Router::prefix('/bibliolen-dev-main/utilisateur')->group(function () { //
 
 // region API
 
-Router::prefix('/bibliolen-dev-main/api')->group(function () {
+Router::prefix('/api')->group(function () {
     Router::get('/keywords', [Controllers\ApiController::class, 'getKeywords'])->middleware(ManagerAuthApiMiddleware::class);
     Router::post('/keyword', [Controllers\ApiController::class, 'addKeyword'])->middleware(ManagerAuthApiMiddleware::class);
     Router::get('/authors', [Controllers\ApiController::class, 'getAuthors'])->middleware(ManagerAuthApiMiddleware::class);
@@ -84,8 +84,8 @@ Router::prefix('/bibliolen-dev-main/api')->group(function () {
 // endregion
 
 // region Errors
-Router::get('/bibliolen-dev-main/not-allowed', [Controllers\ErrorsController::class, 'notAllowed']);
-Router::get('/bibliolen-dev-main/not-found', [Controllers\ErrorsController::class, 'notFound']);
+Router::get('/not-allowed', [Controllers\ErrorsController::class, 'notAllowed']);
+Router::get('/not-found', [Controllers\ErrorsController::class, 'notFound']);
 // endregion
 
 
