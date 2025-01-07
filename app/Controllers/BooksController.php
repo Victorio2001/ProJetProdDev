@@ -16,11 +16,12 @@ class BooksController
     public function __construct()
     {
         $this->db = Database::getInstance(
-            host: getenv("DB_HOST"),
-            user: getenv("DB_USERNAME"),
-            password: getenv("DB_PASSWORD"),
-            database: getenv("DB_NAME")
-        );
+    getenv('DB_HOST'),
+    getenv('DB_USERNAME'),
+    getenv('DB_PASSWORD'),
+    getenv('DB_NAME'),
+    getenv('DB_PORT')
+);
     }
 
     public function show(int $id): void

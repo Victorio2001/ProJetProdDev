@@ -26,10 +26,11 @@ class Database
         private readonly string $user,
         private readonly string $password,
         private readonly string $database,
+        private readonly int $port,
     )
     {
         $this->_bdd = new PDO(
-            "pgsql:host=$this->host;dbname=$this->database;",
+            "pgsql:host=$this->host;dbname=$this->database;port=$this->port;",
             $this->user,
             $this->password
         );
@@ -44,10 +45,11 @@ class Database
         string $user,
         string $password,
         string $database,
+        int $port
     ): Database
     {
         if (is_null(self::$_instance))
-            self::$_instance = new Database($host, $user, $password, $database);
+            self::$_instance = new Database($host, $user, $password, $database, $port);
 
         return self::$_instance;
     }

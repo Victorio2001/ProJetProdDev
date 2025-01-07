@@ -12,7 +12,8 @@ $database = Database::getInstance(
     getenv('DB_HOST'),
     getenv('DB_USERNAME'),
     getenv('DB_PASSWORD'),
-    getenv('DB_NAME')
+    getenv('DB_NAME'),
+    getenv('DB_PORT')
 );
 
 //création de la table migrations

@@ -12,7 +12,8 @@ $database = Database::getInstance(
     getenv('DB_HOST'),
     getenv('DB_USERNAME'),
     getenv('DB_PASSWORD'),
-    getenv('DB_NAME')
+    getenv('DB_NAME'),
+    getenv('DB_PORT')
 );
 
 //création de la table migrations
@@ -33,7 +34,6 @@ $migrations = array_diff($migrations, ['.', '..']);
 
 //tri
 sort($migrations);
-
 
 //récupération du dernier fichier de migrations
 $lastFileMigration = (int)explode('_', $migrations[count($migrations) - 1])[0];
@@ -75,7 +75,7 @@ foreach ($migrations as $migration) {
         echo "Applying new migration : $migration" . PHP_EOL;
 
         //recuperation content fichier sql
-        $sql = file_get_contents(__DIR__ . '/sql/' . $migration);
+        $sql = file_get_contents(__DIR__ . '/sql/up/' . $migration);
 
         //push du contenu dans bdd
         $database->makeMigrationRequest($sql);
