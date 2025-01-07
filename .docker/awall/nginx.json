@@ -1,0 +1,13 @@
+{
+  "description": "Allow incoming Nginx HTTP (TCP/80) port",
+  "filter": [
+    {
+      "in": "internet",
+      "out": "_fw",
+      "service": [
+        "http"
+      ],
+      "action": "accept"
+    }
+  ]
+}

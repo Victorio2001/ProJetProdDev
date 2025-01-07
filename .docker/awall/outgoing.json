@@ -1,0 +1,15 @@
+{
+  "description": "Allow outgoing connections for dns, http and ping",
+  "filter": [
+    {
+      "in": "_fw",
+      "out": "internet",
+      "service": [
+        "dns",
+        "http",
+        "ping"
+      ],
+      "action": "accept"
+    }
+  ]
+}

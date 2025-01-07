@@ -1,0 +1,36 @@
+version: "3"
+services:
+  web_recette:
+    image: "registry.gitlab.com/ort.lyon.enseignement.numerique/3olen/2023.2024-lumos-camminus/projet-31/1001-librairies/bibliolen-dev:recette"
+    container_name: "bibliolen-recette"
+    restart: unless-stopped
+    volumes:
+      - "/home/librairies/Documents/docker_volumes/bibliolen_images_recette:/var/www/html/public/img/couvertures"
+    networks:
+      N_Recette:
+        ipv4_address: 192.168.0.19
+    environment:
+      - "APP_NAME=BibliOlen"
+      - "DB_HOST=192.168.0.20"
+      - "DB_PORT=5432"
+      - "DB_NAME=projet31"
+      - "DB_USERNAME=postgres"
+      - "DB_PASSWORD=CHANGE_ME"
+  db_recette:
+    image: "postgres:16.1"
+    container_name: "bibliolen-db-recette"
+    volumes:
+      - "/home/librairies/Documents/docker_volumes/bibliolen_db_recette:/var/lib/postgresql/data"
+    networks:
+      N_Recette:
+        ipv4_address: 192.168.0.20
+    environment:
+      POSTGRES_PASSWORD: CHANGE_ME
+
+networks:
+  N_Recette:
+    external: true
+
+networks:
+  N_Recette:
+    external: true

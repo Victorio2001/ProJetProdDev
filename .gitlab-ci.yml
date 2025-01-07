@@ -1,0 +1,56 @@
+    
+stages:
+  - DockerPhpUnit
+  - MontageDocker
+  - TagsOnly
+  
+
+# Définition des jobs
+
+# Job de tests
+"Run PHP Unit Tests" :
+  stage: DockerPhpUnit
+  image: php:8.3
+  before_script:
+    # Install dependencies
+    - bash ci/docker_install.sh > /dev/null
+  script:
+
+    # Installer PHPUnit via Composer
+    - apt-get update && apt-get install -y wget unzip
+    - wget https://phar.phpunit.de/phpunit.phar
+    - chmod +x phpunit.phar
+    - mv phpunit.phar /usr/local/bin/phpunit
+    # Exécuter les tests PHPUnit
+    - phpunit --version
+    # Ajoutez ici vos commandes pour exécuter les tests PHPUnit
+
+"Build and pull image to registry":
+  image: docker:20.10.16
+  stage: MontageDocker
+  services:
+    - docker:20.10.16-dind
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
+        
+
+"Build and pull image to registry (tag only)":
+  image: docker:20.10.16
+  stage: TagsOnly
+  services:
+    - docker:20.10.16-dind
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
+  
+  only:
+    - tags
+
+

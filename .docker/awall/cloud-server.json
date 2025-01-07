@@ -1,0 +1,20 @@
+{
+  "description": "Default awall policy to protect the container",
+  "variable": {
+    "internet_if": "eth1"
+  },
+  "zone": {
+    "internet": {
+      "iface": "$internet_if"
+    }
+  },
+  "policy": [
+    {
+      "in": "internet",
+      "action": "drop"
+    },
+    {
+      "action": "reject"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+version: "3"
+services:
+  web_integration:
+    image: "registry.gitlab.com/ort.lyon.enseignement.numerique/3olen/2023.2024-lumos-camminus/projet-31/1001-librairies/bibliolen-dev:integration"
+    container_name: "bibliolen-integration"
+    restart: unless-stopped
+    volumes:
+      - "/home/librairies/Documents/docker_volumes/bibliolen_images_integration:/var/www/html/public/img/couvertures"
+    networks:
+      N_Integration:
+        ipv4_address: 192.168.0.3
+    environment:
+      - "APP_NAME=BibliOlen"
+      - "DB_HOST=192.168.0.4"
+      - "DB_PORT=5432"
+      - "DB_NAME=projet31"
+      - "DB_USERNAME=postgres"
+      - "DB_PASSWORD=CHANGE_ME"
+  db_integration:
+    image: "postgres:16.1"
+    container_name: "bibliolen-db-integration"
+    restart: unless-stopped
+    volumes:
+      - "/home/librairies/Documents/docker_volumes/bibliolen_db_integration:/var/lib/postgresql/data"
+    networks:
+      N_Integration:
+        ipv4_address: 192.168.0.4
+    environment:
+      POSTGRES_PASSWORD: CHANGE_ME
+
+networks:
+  N_Integration:
+    external: true
