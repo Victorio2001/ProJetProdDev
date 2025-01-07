@@ -26,7 +26,7 @@ $database->makeRequest('CREATE TABLE IF NOT EXISTS migrations (
 $lastDbMigration = $database->makeRequest('SELECT * FROM migrations ORDER BY id DESC LIMIT 1');
 
 //scan du directory "/sql"
-$migrations = scandir(__DIR__ . '/sql');
+$migrations = scandir(__DIR__ . '/sql/up');
 
 // un peu flou, compare les deux tableaux et prend la dif
 $migrations = array_diff($migrations, ['.', '..']);
