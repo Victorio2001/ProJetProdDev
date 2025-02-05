@@ -18,7 +18,8 @@ $driver->manage()->window()->maximize();
 
 
 $driver->get('https://scrapingclub.com/exercise/list_infinite_scroll/');
-$html = $driver->getPageSource();
+$html = $driver->getCurrentURL();
+
 echo $html;
 
 

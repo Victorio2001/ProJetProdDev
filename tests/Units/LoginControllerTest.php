@@ -1,10 +1,3 @@
-namespace Units;
-namespace Units;
-namespace Units;
-namespace Units;
-namespace Units;
-namespace Units;
-
 <?php
 
 use PHPUnit\Framework\TestCase;
