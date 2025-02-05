@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+namespace Units;
+
 use PHPUnit\Framework\TestCase;
 
 final class HelloWorldTest extends TestCase

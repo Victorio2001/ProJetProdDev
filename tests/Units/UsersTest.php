@@ -1,11 +1,13 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-use BibliOlen\Services\Crud\CrudUser;
-use BibliOlen\Models\UserModel;
-use BibliOlen\Models\RoleModel;
+namespace Units;
+
 use BibliOlen\Models\PromotionModel;
+use BibliOlen\Models\RoleModel;
+use BibliOlen\Models\UserModel;
+use BibliOlen\Services\Crud\CrudUser;
 use BibliOlen\Tools\Database;
+use PHPUnit\Framework\TestCase;
 
 class UsersTest extends TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests;
+namespace Units;
 
 use BibliOlen\Models\BookModel;
 use BibliOlen\Models\PublisherModel;
-use PHPUnit\Framework\TestCase;
 use DateTime;
+use PHPUnit\Framework\TestCase;
 
 class BookTest extends TestCase
 {

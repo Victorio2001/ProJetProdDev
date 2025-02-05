@@ -1,3 +1,7 @@
+namespace Units;
+namespace Units;
+namespace Units;
+namespace Units;
 
 <?php
 
@@ -34,7 +38,7 @@ class LoginControllerTest extends TestCase
             id: 10,
             firstName: 'John',
             lastName: 'Doe',
-            email: 'a@gmail.com',password: 'password',
+            email: 'a@gmail.com', password: 'password',
             readOnly: false,
             role: new RoleModel(1, 'Admin'),
             promotion: new PromotionModel(1, 'Promotion 2021')
@@ -53,9 +57,8 @@ class LoginControllerTest extends TestCase
 
     }
 
-    public function testNotSucessSeesionUser() // Retourne ok si la session user est bien bonne
+    public function testNotSucessSeesionUser()
     {
-        // Création d'un utilisateur
         $user = new UserModel(
             id: 10,
             firstName: 'John',
@@ -68,7 +71,6 @@ class LoginControllerTest extends TestCase
 
         );
 
-        // Création d'une session
         $_SESSION['users'] = $user;
 
         if (isset($_SESSION['users'])) {
