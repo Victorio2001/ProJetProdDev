@@ -1,10 +1,12 @@
 {
     "require-dev": {
-        "phpunit/phpunit": "^10.5"
+        "phpunit/phpunit": "^10.5",
+        "phpunit/phpunit-selenium": "^1.3"
     },
     "require": {
         "corviz/router": "^1.0",
       "ext-pdo": "*",
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+        "php-webdriver/webdriver": "^1.15"
     }
 }
