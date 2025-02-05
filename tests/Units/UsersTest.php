@@ -65,7 +65,7 @@ class UsersTest extends TestCase
         $this->assertEquals('John', $user->firstName);
         $this->assertEquals($mockRole, $user->role);
 
-        echo "Test de création d'utilisateur réussi.\n";
+        echo "LoanTest de création d'utilisateur réussi.\n";
     }
 
     public function testDeleteUser()
@@ -83,9 +83,9 @@ class UsersTest extends TestCase
 
         // Vérification
         if ($result) {
-            echo "Test de suppression d'utilisateur réussi.\n";
+            echo "LoanTest de suppression d'utilisateur réussi.\n";
         } else {
-            echo "Test de suppression d'utilisateur échoué.\n";
+            echo "LoanTest de suppression d'utilisateur échoué.\n";
         }
 
         $this->assertTrue($result);
@@ -108,9 +108,9 @@ class UsersTest extends TestCase
         $result = $this->crudUser->apiModif($data);
 
         if ($result["success"]) {
-            echo "Test de modification d'utilisateur réussi.\n";
+            echo "LoanTest de modification d'utilisateur réussi.\n";
         } else {
-            echo "Test de modification d'utilisateur échoué.\n";
+            echo "LoanTest de modification d'utilisateur échoué.\n";
         }
 
         $this->assertEquals(200, $result["status"]);

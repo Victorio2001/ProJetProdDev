@@ -12,7 +12,7 @@ class BookTest extends TestCase
     public function testConstructor() // vérifier le constructor
     {
         $id = 1;
-        $titre = 'Test Book';
+        $titre = 'LoanTest Book';
         $resume = 'This is a test book description.';
         $isbn = '1234567890123';
         $anneePublication = 2023;
