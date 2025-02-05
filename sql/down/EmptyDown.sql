@@ -1,0 +1,22 @@
+EXEC sp_msforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT ALL";
+
+DROP TABLE IF EXISTS etat_reservation;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS mots_cles;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS auteurs;
+DROP TABLE IF EXISTS editeurs;
+DROP TABLE IF EXISTS modules;
+DROP TABLE IF EXISTS matieres;
+DROP TABLE IF EXISTS modules;
+DROP TABLE IF EXISTS promotions;
+DROP TABLE IF EXISTS livres;
+DROP TABLE IF EXISTS utilisateurs;
+DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS utilisateur_livres_emprunter;
+DROP TABLE IF EXISTS utilisateur_livres_reserver
+DROP TABLE IF EXISTS livre_mots_cles;
+DROP TABLE IF EXISTS livre_auteurs;
+DROP TABLE IF EXISTS module_matieres;
+
+EXEC sp_msforeachtable "ALTER TABLE ? WITH CHECK CHECK CONSTRAINT ALL";

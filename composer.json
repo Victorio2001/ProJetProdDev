@@ -5,6 +5,13 @@
     "require": {
         "corviz/router": "^1.0",
       "ext-pdo": "*",
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+        "php-webdriver/webdriver": "^1.15"
+    },
+  "autoload": {
+    "psr-4": {
+      "BibliOlen\\": "app/"
     }
+  }
+
 }
