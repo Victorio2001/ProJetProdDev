@@ -33,6 +33,16 @@ class UserModel
 
     public static function getDefault(): UserModel
     {
-        return new UserModel(0, '', '', '', '', false, RoleModel::getDefault(), PromotionModel::getDefault());
+        return new UserModel(
+            id: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            readOnly: false,
+            role: RoleModel::getDefault(),
+            promotion: PromotionModel::getDefault()
+        );
     }
+
 }

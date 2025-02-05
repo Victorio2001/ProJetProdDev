@@ -13,8 +13,11 @@ class RoleModel
         $this->name = $name;
     }
 
-    public static function getDefault() : RoleModel
+    public static function getDefault(): RoleModel
     {
-        return new RoleModel(0, '');
+        return new RoleModel(
+            id: 0,
+            name: 'Default Role'
+        );
     }
 }
