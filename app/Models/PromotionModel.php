@@ -15,6 +15,10 @@ class PromotionModel
 
     public static function getDefault(): PromotionModel
     {
-        return new PromotionModel(0, '');
+        return new PromotionModel(
+            id: 0,
+            name: 'Default Promotion'
+        );
     }
+
 }

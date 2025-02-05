@@ -75,7 +75,7 @@ foreach ($migrations as $migration) {
         echo "Applying new migration : $migration" . PHP_EOL;
 
         //recuperation content fichier sql
-        $sql = file_get_contents(__DIR__ . '/sql/' . $migration);
+        $sql = file_get_contents(__DIR__ . '/sql/up/' . $migration);
 
         //push du contenu dans bdd
         $database->makeMigrationRequest($sql);
