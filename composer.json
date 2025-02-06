@@ -1,12 +1,15 @@
 {
-    "require-dev": {
-        "phpunit/phpunit": "10"
-    },
-    "require": {
-        "corviz/router": "^1.0",
-      "ext-pdo": "*",
-        "phpmailer/phpmailer": "^6.9"
-    },
+  "require-dev": {
+    "phpunit/phpunit": "10"
+  },
+  "require": {
+    "corviz/router": "^1.0",
+    "ext-pdo": "*",
+    "phpmailer/phpmailer": "^6.9"
+  },
+  "scripts": {
+    "test": "php vendor/bin/phpunit src/TestPhpUnits/UtilisateurTest.php src/TestPhpUnits/LivreTest.php src/TestPhpUnits/LIvreUtilisateurTest.php src/TestPhpUnits/EditeurTest.php "
+  },
   "autoload": {
     "psr-4": {
       "BibliOlen\\": "app/"
